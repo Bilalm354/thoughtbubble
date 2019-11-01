@@ -1,0 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.testing {
+  width: 71.42857%;
+  height: 500%;
+  background: orange;
+  color: honeydew;
+  margin: 70px;
+}
