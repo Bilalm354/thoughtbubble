@@ -7,22 +7,22 @@ gulp.task('hello', function(done) {
     done();
 });
 
-
-// SSCC to CSS and minify
-
 //  require gulp-sass plugin 
 var sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
+
+// SSCC to CSS and minify
 gulp.task('sass', function(){
     return gulp.src('app/scss/**/*.scss')
-    .pipe(sass())
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('app/css'))
+
 });
- 
-gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
-});
+
+gulp.task('watch', function(){
+  gulp.watch('app/scss/**/*.scss', gulp.series('sass')); 
+})
 
 //  Minify Javascript 
 const minify = require('gulp-minify');
